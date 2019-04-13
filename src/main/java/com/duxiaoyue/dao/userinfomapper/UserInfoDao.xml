@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duxiaoyue.dao.userinfomapper.UserInfoDao">
+<!--user_info表的字段映射-->
+    <resultMap id="map" type="com.duxiaoyue.entity.UserInfo">
+     <id column="id" property="id"/>
+        <result column="login_name" property="loginName"/>
+        <result column="pass_word" property="passWord"/>
+</resultMap>
+    <select id="selectUser" resultMap="map" parameterType="String">
+        select *
+        from user_info
+        <where>
+            <if test="loginName!=null and loginName!=''">
+                login_name=#{loginName}
+            </if>
+            <if test="passWord!=null and passWord!=''">
+                and pass_word=#{passWord}
+            </if>
+        </where>
+    </select>
+</mapper>

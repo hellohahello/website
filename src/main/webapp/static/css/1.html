@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="1223">
+<input id="123" value="2">
+</form>
+<div class="divClass">
+
+</div>
+<ol ></ol>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+            url: "/user/show.action",
+            data:{
+                str: $("#1223").val(),
+            },
+            type: "post",
+            success: function (res) {
+                console.log(res)
+                $(".divClass").html(res);
+            },
+            error: function (re) {
+                console.log(re.val())
+                alert(re.val())
+            }
+        })
+    })
+</script>
+</html>
